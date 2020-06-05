@@ -94,6 +94,21 @@ export default {
       USER_PROPS_TITLE
     }
   },
+  mounted() {
+    const meta = uuid();
+    this.setUserName({
+      meta,
+      data: this.user.user_name
+    })
+    this.setUserCustomName({
+      meta,
+      data: this.user.user_custom
+    })
+    this.setUserEmail({
+      meta,
+      data: this.user.email
+    })
+  },
   computed: {
     ...mapGetters('user', [
       'getUserName',
@@ -102,7 +117,7 @@ export default {
     ]),
     userName: {
       get () {
-        return this.getUserName || this.user.user_name
+        return this.getUserName // || this.user.user_name
       },
       set (val) {
         this.setUserName({
@@ -113,7 +128,7 @@ export default {
     },
     userCastomName: {
       get () {
-        return this.getUserCustomName || this.user.user_custom
+        return this.getUserCustomName // || this.user.user_custom
       },
       set (val) {
         this.setUserCustomName({
@@ -124,7 +139,7 @@ export default {
     },
     userEmail: {
       get () {
-        return this.getUserEmail || this.user.email
+        return this.getUserEmail // || this.user.email
       },
       set (val) {
         if(!EMAIL_REG_EXP.test(val)) {
@@ -149,15 +164,12 @@ export default {
     editUserProps(event){
       switch(event.target.id) {
         case EDIT_PROPS.NAME:
-          this.userName = this.user.user_name
           this.editName = !this.editName
           break
         case EDIT_PROPS.CUSTOM:
-          this.userCastomName = ''
           this.editCustomName = !this.editCustomName
           break
         case EDIT_PROPS.EMAIL:
-          this.userEmail = ''
           this.editEmail = !this.editEmail
           break
       }
