@@ -63,6 +63,7 @@ function showCmder () {
 function closeCmder() {
   commandBlock.style.display = 'none'
   icon.style.display = 'flex'
+  input.value = ''
   if (timer) {
     clearTimeout(timer)
   }
