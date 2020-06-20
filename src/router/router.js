@@ -47,6 +47,7 @@ const routes = [
 
 let router =  new VueRouter({
   mode: 'history',
+  base: (process.env.NODE_ENV === 'development') ? '/' : '/usersList/',
   routes
 })
 
