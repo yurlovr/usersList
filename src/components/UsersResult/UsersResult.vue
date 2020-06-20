@@ -9,7 +9,7 @@
                       :clickButton="showUser"/>
       </li>
     </ul>
-    <Pagination
+    <Pagination v-if="!getIsLoading"
                 :totalRecords="getTotalRecords"
                 :values="LIMIT_VALUES"
                 :limitRecords="getLimit"
@@ -54,7 +54,8 @@ export default {
       'getLimit'
     ]),
     ...mapGetters('app', [
-      'getUsersData'
+      'getUsersData',
+      'getIsLoading'
     ]),
   },
   methods: {
