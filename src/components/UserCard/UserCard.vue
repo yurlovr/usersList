@@ -117,7 +117,7 @@ export default {
     ]),
     userName: {
       get () {
-        return this.getUserName || this.user.user_name
+        return this.getUserName //|| this.user.user_name
       },
       set (val) {
         this.setUserName({
@@ -128,7 +128,7 @@ export default {
     },
     userCastomName: {
       get () {
-        return this.getUserCustomName || this.user.user_custom
+        return this.getUserCustomName //|| this.user.user_custom
       },
       set (val) {
         this.setUserCustomName({
@@ -139,7 +139,7 @@ export default {
     },
     userEmail: {
       get () {
-        return this.getUserEmail || this.user.email
+        return this.getUserEmail // || this.user.email
       },
       set (val) {
         if(!EMAIL_REG_EXP.test(val)) {
@@ -165,15 +165,24 @@ export default {
       switch(event.target.id) {
         case EDIT_PROPS.NAME:
           this.editName = !this.editName
-          this.userName = ''
+          this.userName = this.user.user_name
+          if (this.newName) {
+            this.newName = false
+          }
           break
         case EDIT_PROPS.CUSTOM:
           this.editCustomName = !this.editCustomName
-          this.userCastomName = ''
+          this.userCustomName = this.user.user_custom
+          if (this.newCastomName) {
+            this.newCastomName = false
+          }
           break
         case EDIT_PROPS.EMAIL:
           this.editEmail = !this.editEmail
-          this.userEmail = ''
+          this.userEmail = this.user.email
+          if (this.newEmail) {
+            this.newEmail = false
+          }
           break
       }
     },
