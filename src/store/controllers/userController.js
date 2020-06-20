@@ -18,7 +18,7 @@ export default function () {
       const updateUser = (args) => {
         Api.UpdateCurrentUser(args)
         .then(res => {
-          if (res.starus === 200) {
+          if (res.status === 200) {
             dispatch('app/setIsLoading', {
               meta,
               data: LOADING_ACTIONS.USER

@@ -38,7 +38,7 @@ export default {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -100%);
+  transform: translate(-50%, -50%);
   &_text {
     text-shadow: 2px 1px 2px #000000a1;
     font-size: 35px;

@@ -4,7 +4,7 @@
       <BButton :label="BUTTON_LABEL.BACK" :onClick="goBack"/>
     </div>
     <div v-if="getShowBtnCreateUser === HEADER_BUTTON_STATE.SHOW" class="empty"/>
-    <p class="text">Users List</p>
+    <p class="text">{{getHeaderText ? 'User ' + getHeaderText : 'Users List'}}</p>
     <div v-if="getShowBtnCreateUser  === HEADER_BUTTON_STATE.SHOW" class="button_wrapper create">
       <BButton :label="BUTTON_LABEL.CREATE_USER" :onClick="createUser"/>
     </div>
@@ -31,7 +31,8 @@ export default {
   },
   computed: {
     ...mapGetters('app', [
-      'getShowBtnCreateUser'
+      'getShowBtnCreateUser',
+      'getHeaderText'
     ])
   },
   methods: {

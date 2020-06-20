@@ -3,7 +3,7 @@ export const REFRESH_USER_TIMEOUT = 500
 export const SMTH_GO_WRONG = 'Somthing go wrong'
 export const NEW_USER_BALANCE = 'New User Balance: '
 export const LIMIT_VALUES = [9, 18, 27, 36]
-export const EMAIL_REG_EXP = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
+export const EMAIL_REG_EXP = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zа-я0-9](?:[a-zа-я0-9-]*[a-zа-я0-9])?\.)+[a-zа-я0-9](?:[a-zа-я0-9-]*[a-z0-9])?/
 export const DATE_FORMAT_RENDER = 'DD-MM-YYYY HH:mm'
 export const DATE_FORMAT_MMDDYYYY = 'MM-DD-YYYY'
 export const DATE_FORMAT_DDMMYYYY = 'DD.MM.YYYY'
@@ -27,9 +27,12 @@ export const USER_PROPS_TITLE = {
   EMAIL: 'User Email',
   REG_DATE: 'Register Date',
   BALANCE: 'User Balance',
-  AMOUNT: 'User Wallet Amoutn',
+  AMOUNT: 'User Wallet Amount',
   CURRENCY: 'User Wallet Currency',
-  ENABLED: 'User Enabled'
+  ENABLED: 'User Enabled',
+  USER_BALANCE: 'User Wallet Balance',
+  ID: 'User Id',
+  Ebabled: 'User enabled'
 }
 
 export const BUTTON_LABEL = {
@@ -41,7 +44,8 @@ export const BUTTON_LABEL = {
   CREATE_USER: 'Create User',
   REPORT: 'Get Report',
   TRANSACTIONS: 'Transactions',
-  EDIT_BALANCE: 'Edit balance'
+  EDIT_BALANCE: 'Edit balance',
+  SHOW: 'Show'
 }
 
 export const INPUT_LABEL = {
@@ -64,6 +68,7 @@ export const MODAL_TITLE = {
 }
 
 export const REQUIRED_FIELD = 'Required field'
+export const SAVE_USER_PROP = 'Prop was changed'
 
 export const DATE_PICKER_CONST = {
   START_HOLDER: 'Start Date',

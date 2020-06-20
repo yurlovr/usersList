@@ -2,7 +2,8 @@
   <div class="card_name">
     <p class="name">
       <span>{{title}}:</span>
-      <span v-if="!isEdit" class="text">{{userProps || '---'}}</span>
+      <span v-if="!isEdit && saveProp" class="text">{{SAVE_USER_PROP}}: {{userProps || '---'}}</span>
+      <span v-else-if="!isEdit" class="text">{{userProps || '---'}}</span>
       <IInput v-else
               :type="'text'"
               :placeholder="userProps"
@@ -28,7 +29,7 @@
 <script>
 import IInput from '../IInput/IInput'
 import BButton from '../BButton/BButton'
-import { BUTTON_LABEL } from '../../const/const'
+import { BUTTON_LABEL, SAVE_USER_PROP } from '../../const/const'
 
 export default {
   name: 'UserPropsBlock',
@@ -72,11 +73,15 @@ export default {
     isValid: {
       type: Boolean,
       default: true
+    },
+    saveProp: {
+      type: Boolean
     }
   },
   data() {
     return {
-      BUTTON_LABEL
+      BUTTON_LABEL,
+      SAVE_USER_PROP
     }
   }
 }

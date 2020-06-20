@@ -6,7 +6,7 @@
           :placeholder="placeholder"
           v-model="model"
           autocomplete="off"/>
-    <span class="error">
+    <span v-if="errorText" class="error">
         {{errorText || ''}}
     </span>
   </label>

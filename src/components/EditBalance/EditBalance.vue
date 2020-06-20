@@ -6,7 +6,7 @@
         :marginTop="'200px'"
   >
   <div v-if="!getBalanceChanged" class="balance_current">
-    Current Balance: <span>{{currentBalance.toFixed(2)}}</span> {{currency || '---'}}
+    Current Balance: <span>{{currentBalance.toFixed(2)}}</span>
   </div>
   <div v-if="!getBalanceChanged" class="balance" >
     <IInput

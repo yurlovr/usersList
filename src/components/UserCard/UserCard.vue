@@ -9,6 +9,7 @@
                   :editButtonId="EDIT_PROPS.NAME"
                   :saveButtonId="SAVE_PROPS.SNAME"
                   :changeValue="changeName"
+                  :saveProp="newName"
   />
   <UserPropsBlock
                   :title="USER_PROPS_TITLE.CUSTOM"
@@ -19,6 +20,7 @@
                   :editButtonId="EDIT_PROPS.CUSTOM"
                   :saveButtonId="SAVE_PROPS.SCUSTOM"
                   :changeValue="changeCastomName"
+                  :saveProp="newCastomName"
   />
   <UserPropsBlock
                   :title="USER_PROPS_TITLE.EMAIL"
@@ -30,6 +32,7 @@
                   :saveButtonId="SAVE_PROPS.SEMAIL"
                   :changeValue="changeEmail"
                   :isValid="emailVaild"
+                  :saveProp="newEmail"
   />
   <UserPropsBlock
                   :title="USER_PROPS_TITLE.REG_DATE"
@@ -38,25 +41,19 @@
   />
   <UserPropsBlock
                   :title="USER_PROPS_TITLE.BALANCE"
-                  :userProps="user.balance.toFixed(2) + ' ' + (user.wallet_currency || '---')"
+                  :userProps="user.balance.toFixed(2)"
                   :showButtons="false"
   />
 
   <UserPropsBlock
-                  :title="USER_PROPS_TITLE.AMOUNT"
-                  :userProps="user.wallet_amount.toFixed(2)"
-                  :showButtons="false"
-  />
-
-  <UserPropsBlock
-                  :title="USER_PROPS_TITLE.CURRENCY"
-                  :userProps="user.wallet_currency ? user.wallet_currency : '---'"
+                  :title="USER_PROPS_TITLE.USER_BALANCE"
+                  :userProps="user.wallet_amount.toFixed(2) + ' ' + (user.wallet_currency ? user.wallet_currency : '---')"
                   :showButtons="false"
   />
 
   <UserPropsBlock
                   :title="USER_PROPS_TITLE.ENABLED"
-                  :userProps="user.enabled + ''"
+                  :userProps="user.enabled ? 'Yes' : 'No'"
                   :showButtons="false"
   />
 </section>
@@ -88,6 +85,9 @@ export default {
       editName: false,
       editCustomName: false,
       editEmail: false,
+      newName: false,
+      newCastomName: false,
+      newEmail: false,
       emailVaild: true,
       SAVE_PROPS,
       EDIT_PROPS,
@@ -117,7 +117,7 @@ export default {
     ]),
     userName: {
       get () {
-        return this.getUserName // || this.user.user_name
+        return this.getUserName || this.user.user_name
       },
       set (val) {
         this.setUserName({
@@ -128,7 +128,7 @@ export default {
     },
     userCastomName: {
       get () {
-        return this.getUserCustomName // || this.user.user_custom
+        return this.getUserCustomName || this.user.user_custom
       },
       set (val) {
         this.setUserCustomName({
@@ -139,7 +139,7 @@ export default {
     },
     userEmail: {
       get () {
-        return this.getUserEmail // || this.user.email
+        return this.getUserEmail || this.user.email
       },
       set (val) {
         if(!EMAIL_REG_EXP.test(val)) {
@@ -165,12 +165,15 @@ export default {
       switch(event.target.id) {
         case EDIT_PROPS.NAME:
           this.editName = !this.editName
+          this.userName = ''
           break
         case EDIT_PROPS.CUSTOM:
           this.editCustomName = !this.editCustomName
+          this.userCastomName = ''
           break
         case EDIT_PROPS.EMAIL:
           this.editEmail = !this.editEmail
+          this.userEmail = ''
           break
       }
     },
@@ -180,12 +183,15 @@ export default {
       switch(target) {
         case SAVE_PROPS.SNAME:
           this.editName = false
+          this.newName = true
           break
         case SAVE_PROPS.SCUSTOM:
           this.editCustomName = false
+          this.newCastomName = true
           break
         case SAVE_PROPS.SEMAIL:
           this.editEmail = false
+          this.newEmail = true
           break
       }
       this.setEditPropsUser({
@@ -206,6 +212,5 @@ export default {
       this.userEmail = val
     }
   }
-
 }
 </script>

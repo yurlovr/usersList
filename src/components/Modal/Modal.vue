@@ -1,5 +1,6 @@
 <template>
   <div class="service__container">
+    <div class="overlay"></div>
     <div class="service__container-content"
         :style="{'height': heightModal || '400px',
         'marginTop': marginTop || '120px',
@@ -33,6 +34,9 @@ export default {
     marginTop: {
       type: String
     }
+  },
+  mounted() {
+    window.scrollTo(0, 100)
   }
 }
 </script>
@@ -47,7 +51,6 @@ export default {
   left: 0px;
   display: flex;
   justify-content: center;
-  background-color: rgba(0,0,0,0.4);
   &-content {
     position: relative;
     width: 900px;
@@ -149,5 +152,13 @@ export default {
       width: 100%;
       margin-bottom: 40px;
     }
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.4);
 }
 </style>

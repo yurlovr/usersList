@@ -30,6 +30,10 @@ export default function () {
           switch(payload.data) {
             case LOADING_ACTIONS.USERS:
               userInitialState()
+              dispatch('app/setHeaderText', {
+                meta,
+                data: ''
+              })
               Api.Users({offset: getter['page/getOffset'],  limit: getter['page/getLimit']})
               .then(res => {
                 const { recordsTotal, data} = res
@@ -61,6 +65,10 @@ export default function () {
                   dispatch('app/setIsLoading', {
                     meta,
                     data: null
+                  })
+                  dispatch('app/setHeaderText', {
+                    meta,
+                    data: res.user_name
                   })
                 }, REFRESH_USER_TIMEOUT)
               })

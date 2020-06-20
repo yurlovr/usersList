@@ -1,12 +1,12 @@
 <template>
-  <section class="results" ref="section">
+  <section class="results">
     <ul class="results_list">
       <li class="results_item"
           v-for="user in getUsersData"
           :key="user.user_id"
-          @click="showUser(user.user_id)"
       >
-        <UserCardItem :user="user"/>
+        <UserCardItem :user="user"
+                      :clickButton="showUser"/>
       </li>
     </ul>
     <Pagination
@@ -66,7 +66,8 @@ export default {
       'setCurrentUserId',
       'setShowBtnCreateUser'
     ]),
-    showUser(userId) {
+    showUser(event) {
+      const userId = event.target.id
       this.setCurrentUserId({
         meta: uuid(),
         data: userId
@@ -89,7 +90,7 @@ export default {
       this.scrollToTop()
     },
     scrollToTop() {
-      this.$refs.section.scrollTo(0,0)
+      window.scrollTo(0, 0)
     }
   }
 }
@@ -107,7 +108,6 @@ export default {
     margin-bottom: 30px;
     margin-right: 25px;
     border-radius: 20px;
-    cursor: pointer;
     &:hover {
       box-shadow: 1px 1px 12px 4px rgba(109, 221, 255, 0.7);
     }
